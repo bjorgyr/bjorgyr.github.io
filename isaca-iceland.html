@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISACA Ísland — Stofnum deild á Íslandi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0f1a;
+    --paper: #f4f1eb;
+    --warm: #e8e3d9;
+    --accent: #1a5276;
+    --accent-light: #2980b9;
+    --gold: #c49b20;
+    --gold-light: #e6c24a;
+    --fire: #c0392b;
+    --ice: #a3c4d4;
+    --ice-light: #d4e6ef;
+    --text: #2c2c2c;
+    --text-muted: #6b6b6b;
+    --border: #d5cfc3;
+    --glass: rgba(244, 241, 235, 0.85);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--paper);
+    color: var(--text);
+    line-height: 1.7;
+    font-weight: 400;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transition: box-shadow 0.3s;
+  }
+  nav.scrolled { box-shadow: 0 2px 40px rgba(0,0,0,0.06); }
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.8rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; align-items: center; }
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    background: var(--accent) !important;
+    color: var(--paper) !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--accent-light) !important; }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(163,196,212,0.25) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 30%, rgba(196,155,32,0.08) 0%, transparent 50%),
+      var(--paper);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    opacity: 0.4;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -5%;
+    width: 800px;
+    height: 800px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    opacity: 0.3;
+  }
+  .hero-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 8rem 2rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 2px;
+    background: var(--gold);
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-sub {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent);
+    color: var(--paper);
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    transition: all 0.25s;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); box-shadow: 0 8px 30px rgba(26,82,118,0.2); }
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    color: var(--accent);
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 2px solid var(--accent);
+    transition: all 0.25s;
+  }
+  .btn-secondary:hover { background: var(--accent); color: var(--paper); }
+
+  /* ─── COUNTER CARD ─── */
+  .counter-card {
+    background: white;
+    border-radius: 16px;
+    padding: 3rem;
+    box-shadow: 0 4px 60px rgba(0,0,0,0.06);
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .counter-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+  }
+  .counter-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
+  .counter-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 5rem;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+  .counter-number span { color: var(--text-muted); font-size: 2.5rem; }
+  .counter-target {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+  .progress-track {
+    height: 8px;
+    background: var(--warm);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+  .progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+    border-radius: 4px;
+    transition: width 2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .counter-certs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 1.5rem;
+  }
+  .cert-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    padding: 0.3rem 0.7rem;
+    background: var(--ice-light);
+    color: var(--accent);
+    border-radius: 4px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 6rem 2rem; }
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-label::before {
+    content: '';
+    width: 24px;
+    height: 2px;
+    background: var(--gold);
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    color: var(--ink);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .section-sub {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    font-weight: 300;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+
+  /* ─── WHAT IS ISACA ─── */
+  .about-section { background: white; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .about-text p {
+    margin-bottom: 1.25rem;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.8;
+  }
+  .about-text strong { font-weight: 600; color: var(--ink); }
+  .pillar-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+  .pillar {
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: all 0.3s;
+    background: var(--paper);
+  }
+  .pillar:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.04); }
+  .pillar-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .pillar h4 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.02em;
+  }
+  .pillar p {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* ─── WHY ICELAND ─── */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .why-card {
+    padding: 2rem;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .why-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--accent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .why-card:hover::before { opacity: 1; }
+  .why-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.06); }
+  .why-card .card-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+  }
+  .why-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+  .why-card p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  /* ─── BENEFITS ─── */
+  .benefits-section { background: var(--ink); color: var(--paper); }
+  .benefits-section .section-label { color: var(--gold-light); }
+  .benefits-section .section-label::before { background: var(--gold-light); }
+  .benefits-section .section-title { color: var(--paper); }
+  .benefits-section .section-sub { color: rgba(244,241,235,0.6); }
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .benefit-item {
+    padding: 2rem;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.03);
+    transition: all 0.3s;
+  }
+  .benefit-item:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.15); }
+  .benefit-item h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--paper);
+  }
+  .benefit-item p {
+    font-size: 0.88rem;
+    color: rgba(244,241,235,0.55);
+    font-weight: 300;
+    line-height: 1.7;
+  }
+  .benefit-icon {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+  }
+
+  /* ─── CERTIFICATIONS ─── */
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.25rem;
+  }
+  .cert-card {
+    padding: 1.75rem 1.25rem;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s;
+  }
+  .cert-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.06); }
+  .cert-abbr {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+  .cert-name {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  /* ─── ORGS ─── */
+  .orgs-section { background: white; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .orgs-text {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    margin-bottom: 2rem;
+    max-width: 700px;
+  }
+  .org-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .org-tag {
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.5rem 1.2rem;
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    color: var(--text);
+    transition: all 0.2s;
+  }
+  .org-tag:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ─── SIGNUP ─── */
+  .signup-section {
+    background:
+      radial-gradient(ellipse at 80% 50%, rgba(163,196,212,0.15) 0%, transparent 60%),
+      var(--paper);
+  }
+  .signup-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .form-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.04);
+  }
+  .form-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .form-card .form-sub {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+  .form-group { margin-bottom: 1.25rem; }
+  .form-group label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+  }
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    background: var(--paper);
+    color: var(--text);
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus { border-color: var(--accent); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-submit {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.85rem;
+    font-size: 0.95rem;
+  }
+  .form-note {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 1rem;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* ─── FAQ ─── */
+  .faq-list { max-width: 720px; }
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 0;
+  }
+  .faq-q {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--ink);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+  .faq-q::after {
+    content: '+';
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.2rem;
+    color: var(--accent);
+    flex-shrink: 0;
+    transition: transform 0.3s;
+  }
+  .faq-item.open .faq-q::after { transform: rotate(45deg); }
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1), padding 0.3s;
+  }
+  .faq-item.open .faq-a { max-height: 300px; padding-top: 1rem; }
+  .faq-a p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.8;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--ink);
+    color: rgba(244,241,235,0.4);
+    padding: 3rem 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+  footer a { color: var(--gold-light); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .hero-grid, .about-grid, .signup-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-grid { padding-top: 6rem; }
+    .why-grid { grid-template-columns: 1fr; }
+    .benefits-grid { grid-template-columns: 1fr; }
+    .certs-grid { grid-template-columns: repeat(3, 1fr); }
+    .nav-links a:not(.nav-cta) { display: none; }
+  }
+  @media (max-width: 600px) {
+    .certs-grid { grid-template-columns: repeat(2, 1fr); }
+    .pillar-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    section { padding: 4rem 1.25rem; }
+  }
+
+  /* ─── ANIMATIONS ─── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- ─── NAVIGATION ─── -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">ISACA <span>Ísland</span></a>
+    <div class="nav-links">
+      <a href="#about">Hvað er ISACA</a>
+      <a href="#why">Af hverju Ísland</a>
+      <a href="#benefits">Kostir</a>
+      <a href="#faq">Spurningar</a>
+      <a href="#signup" class="nav-cta">Skráðu þig</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="fade-in">
+      <div class="hero-eyebrow">Frumkvæði 2026</div>
+      <h1>Stofnum <em>ISACA</em> deild á&nbsp;Íslandi</h1>
+      <p class="hero-sub">
+        Við erum að safna stofnmeðlimum til þess að koma á fót fyrstu ISACA deildinni á Íslandi — fagfélagi fyrir endurskoðendur, upplýsingaöryggissérfræðinga og alla sem starfa við stafrænt traust.
+      </p>
+      <div class="hero-actions">
+        <a href="#signup" class="btn-primary">Gerðu þig stofnmeðlim →</a>
+        <a href="#about" class="btn-secondary">Frekari upplýsingar</a>
+      </div>
+    </div>
+    <div class="fade-in" style="transition-delay: 0.15s;">
+      <div class="counter-card">
+        <div class="counter-label">Stofnmeðlimir skráðir</div>
+        <div class="counter-number" id="memberCount">0 <span>/ 50</span></div>
+        <div class="counter-target">Markmiðið: 50 meðlimir til að stofna deild</div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 300; margin-top:0.5rem;">
+          Vertu á meðal fyrstu stofnmeðlimanna.
+        </div>
+        <div class="counter-certs">
+          <span class="cert-tag">CISA</span>
+          <span class="cert-tag">CISM</span>
+          <span class="cert-tag">CRISC</span>
+          <span class="cert-tag">CGEIT</span>
+          <span class="cert-tag">CDPSE</span>
+          <span class="cert-tag">ITCA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHAT IS ISACA ─── -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="fade-in">
+        <div class="section-label">Hvað er ISACA</div>
+        <div class="section-title">Alþjóðlegt fagfélag fyrir stafrænt traust</div>
+        <div class="about-text">
+          <p>
+            <strong>ISACA</strong> (Information Systems Audit and Control Association) er alþjóðlegt fagfélag sem stofnað var árið 1969. Félagið þjónustar yfir 170.000 meðlimi í meira en 188 löndum í gegnum 225+ staðbundnar deildir.
+          </p>
+          <p>
+            Meðlimir ISACA starfa við innri endurskoðun upplýsingatækni, upplýsingaöryggi, áhættustýringu og stjórnun — þeir eru vaktmenn stafræns trausts í stofnunum og fyrirtækjum.
+          </p>
+          <p>
+            Íslandi hefur ekki verið með eigin deild hingað til. Íslenskir sérfræðingar sem halda ISACA vottanir eru skráðir sem „At Large" meðlimir — án staðbundins fagfélags, án staðbundinna viðburða, án staðbundinnar CPE námskeidsframboðs.
+          </p>
+          <p><strong>Við ætlum að breyta þessu.</strong></p>
+        </div>
+      </div>
+      <div class="fade-in" style="transition-delay: 0.1s;">
+        <div class="pillar-grid">
+          <div class="pillar">
+            <div class="pillar-icon">🛡</div>
+            <h4>Upplýsingaöryggi</h4>
+            <p>Vernd gagna, kerfa og innviða gegn stafrænum ógnum</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">📋</div>
+            <h4>Endurskoðun</h4>
+            <p>Óháð mat á UT-kerfum, ferli&shy;um og stýringum</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">⚖️</div>
+            <h4>Áhættustýring</h4>
+            <p>Greining og stjórnun á tækni&shy;legri og rekstrar&shy;legri áhættu</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-icon">🏛</div>
+            <h4>Stjórnun UT</h4>
+            <p>Stefnumótun og eftirlit með tækni í þágu mark&shy;miða stofnunar</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHY ICELAND ─── -->
+<section id="why">
+  <div class="container">
+    <div class="section-label fade-in">Af hverju Ísland, af hverju núna</div>
+    <div class="section-title fade-in">Þörfin hefur aldrei verið meiri</div>
+    <div class="section-sub fade-in">
+      Reglugerðarumhverfið harðnar, stafrænar ógnir aukast, og Ísland skortir staðbundið fagsamfélag fyrir þessa sérfræðinga.
+    </div>
+    <div class="why-grid">
+      <div class="why-card fade-in">
+        <div class="card-num">01</div>
+        <h3>DORA & NIS2</h3>
+        <p>Nýjar Evrópureglur um stafræna rekstrarþol (DORA) og net- og upplýsingaöryggi (NIS2) krefjast nýrra hæfniþátta hjá stofnunum á Íslandi — EES samningurinn tryggir innleiðingu.</p>
+      </div>
+      <div class="why-card fade-in" style="transition-delay: 0.1s;">
+        <div class="card-num">02</div>
+        <h3>Eftirlit FME</h3>
+        <p>Fjármálaeftirlitið leggur sífellt meiri áherslu á UT-áhættu og stafrænt öryggi fjármálafyrirtækja. ISACA deildin gæti orðið lykilvettvangar fyrir umræðu og samstarf.</p>
+      </div>
+      <div class="why-card fade-in" style="transition-delay: 0.2s;">
+        <div class="card-num">03</div>
+        <h3>Lítið samfélag — stór tækifæri</h3>
+        <p>Á Íslandi búa um 380 þúsund manns, en fjármálageirinn, orkugeirinn og opinber rekstur eru flókin og tæknifrek. Eitt fagsamfélag getur nýst öllum geirum.</p>
+      </div>
+      <div class="why-card fade-in">
+        <div class="card-num">04</div>
+        <h3>CPE nálægt heimili</h3>
+        <p>Halda þarf áfram menntun (CPE) til að viðhalda ISACA vottunum. Staðbundin deild skipuleggur viðburði sem gefa CPE-einingar — án þess að þurfa að ferðast erlendis.</p>
+      </div>
+      <div class="why-card fade-in" style="transition-delay: 0.1s;">
+        <div class="card-num">05</div>
+        <h3>Tengslanet</h3>
+        <p>Endurskoðendur, öryggissérfræðingar og UT-stjórnendur hittast sjaldan utan sinna stofnana. ISACA deild skapar vettvang þar sem fólk úr bönkum, tryggingum, ríkinu og ráðgjöf deilir reynslu.</p>
+      </div>
+      <div class="why-card fade-in" style="transition-delay: 0.2s;">
+        <div class="card-num">06</div>
+        <h3>Stofnmeðlimir</h3>
+        <p>Að vera á meðal fyrstu 50 meðlimanna er einsdæmi. Þú formarð deildiná, kýst fyrstu stjórnina og leggur grunninn að fagsamfélagi sem þjónustar kynslóðir sérfræðinga.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BENEFITS ─── -->
+<section class="benefits-section" id="benefits">
+  <div class="container">
+    <div class="section-label fade-in">Kostir meðlimaskaps</div>
+    <div class="section-title fade-in">Hvað færðu?</div>
+    <div class="section-sub fade-in">
+      Aðild að ISACA Ísland veitir bæði staðbundna og alþjóðlega kosti.
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-item fade-in">
+        <div class="benefit-icon">🎓</div>
+        <h4>Ókeypis CPE viðburðir</h4>
+        <p>Staðbundnir viðburðir, námskeið og fyrirlestrar sem veita CPE-einingar til að viðhalda vottunum þínum.</p>
+      </div>
+      <div class="benefit-item fade-in" style="transition-delay: 0.1s;">
+        <div class="benefit-icon">🌐</div>
+        <h4>Alþjóðlegt net</h4>
+        <p>Aðgangur að 170.000+ meðlimum, ISACA tímaritinu, rannsóknum og stöðlum eins og COBIT.</p>
+      </div>
+      <div class="benefit-item fade-in">
+        <div class="benefit-icon">🤝</div>
+        <h4>Staðbundið fagsamfélag</h4>
+        <p>Reglulegar samkomur þar sem sérfræðingar úr mismunandi geirum deila reynslu og lausnum.</p>
+      </div>
+      <div class="benefit-item fade-in" style="transition-delay: 0.1s;">
+        <div class="benefit-icon">🏆</div>
+        <h4>Stuðningur við vottanir</h4>
+        <p>Námsefni, leiðbeinendur og undirbúningsáætlanir fyrir CISA, CISM, CRISC og aðrar vottanir.</p>
+      </div>
+      <div class="benefit-item fade-in">
+        <div class="benefit-icon">📢</div>
+        <h4>Rödd í umræðunni</h4>
+        <p>Deildin verður rödd sérfræðinga gagnvart stjórnvöldum og eftirlitsaðilum um UT-öryggi og endurskoðun.</p>
+      </div>
+      <div class="benefit-item fade-in" style="transition-delay: 0.1s;">
+        <div class="benefit-icon">💼</div>
+        <h4>Ferilþróun</h4>
+        <p>Auktu sýnileika þinn í faginu, finndu leiðbeinendur og opnaðu dyr að nýjum tækifærum.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CERTIFICATIONS ─── -->
+<section id="certs">
+  <div class="container">
+    <div class="section-label fade-in">ISACA vottanir</div>
+    <div class="section-title fade-in">Alþjóðlega viðurkenndar vottanir</div>
+    <div class="section-sub fade-in">
+      Deildin mun styðja meðlimi við undirbúning og viðhald þessara alþjóðlegu vottana.
+    </div>
+    <div class="certs-grid">
+      <div class="cert-card fade-in">
+        <div class="cert-abbr">CISA</div>
+        <div class="cert-name">Certified Information Systems Auditor</div>
+      </div>
+      <div class="cert-card fade-in" style="transition-delay: 0.05s;">
+        <div class="cert-abbr">CISM</div>
+        <div class="cert-name">Certified Information Security Manager</div>
+      </div>
+      <div class="cert-card fade-in" style="transition-delay: 0.1s;">
+        <div class="cert-abbr">CRISC</div>
+        <div class="cert-name">Certified in Risk and Information Systems Control</div>
+      </div>
+      <div class="cert-card fade-in" style="transition-delay: 0.15s;">
+        <div class="cert-abbr">CGEIT</div>
+        <div class="cert-name">Certified in the Governance of Enterprise IT</div>
+      </div>
+      <div class="cert-card fade-in" style="transition-delay: 0.2s;">
+        <div class="cert-abbr">CDPSE</div>
+        <div class="cert-name">Certified Data Privacy Solutions Engineer</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TARGET ORGANIZATIONS ─── -->
+<section class="orgs-section">
+  <div class="container">
+    <div class="section-label fade-in">Stofnanir og fyrirtæki</div>
+    <div class="section-title fade-in">Hverjir eru mögulegir meðlimir?</div>
+    <p class="orgs-text fade-in">
+      Sérfræðingar í UT-endurskoðun, upplýsingaöryggi, áhættustýringu og UT-stjórnun starfa víðs vegar um íslenskt atvinnulíf. Þetta eru stofnanirnar þar sem mögulegir meðlimir starfa:
+    </p>
+    <div class="org-tags fade-in">
+      <span class="org-tag">Íslandsbanki</span>
+      <span class="org-tag">Landsbankinn</span>
+      <span class="org-tag">Arion banki</span>
+      <span class="org-tag">Kvika banki</span>
+      <span class="org-tag">PwC</span>
+      <span class="org-tag">KPMG</span>
+      <span class="org-tag">Deloitte</span>
+      <span class="org-tag">EY</span>
+      <span class="org-tag">Ríkisendurskoðun</span>
+      <span class="org-tag">Fjármálaeftirlitið</span>
+      <span class="org-tag">Persónuvernd</span>
+      <span class="org-tag">Seðlabanki Íslands</span>
+      <span class="org-tag">TM tryggingar</span>
+      <span class="org-tag">Sjóvá</span>
+      <span class="org-tag">VÍS</span>
+      <span class="org-tag">Vörður</span>
+      <span class="org-tag">Síminn</span>
+      <span class="org-tag">Advania</span>
+      <span class="org-tag">Sensa</span>
+      <span class="org-tag">Reykjavíkurborg</span>
+      <span class="org-tag">Landspítalinn</span>
+      <span class="org-tag">Stafrænt Ísland</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SIGN UP ─── -->
+<section class="signup-section" id="signup">
+  <div class="container">
+    <div class="signup-grid">
+      <div class="fade-in">
+        <div class="section-label">Skráðu þig</div>
+        <div class="section-title">Vertu stofnmeðlimur</div>
+        <div class="section-sub" style="margin-bottom: 2rem;">
+          Fylltu út eyðublaðið til hægri og við verðum í sambandi. Skráningin er áhugayfirlýsing — ekkert gjald fylgir á þessu stigi. Þegar viðmiðunarfjöldi næst hefst formlegt stofnunarferli hjá ISACA alþjóðlega.
+        </div>
+        <div style="padding: 1.5rem; background: var(--ice-light); border-radius: 12px; margin-bottom: 1.5rem;">
+          <p style="font-size: 0.85rem; color: var(--accent); font-weight: 500; margin-bottom: 0.3rem;">Þarftu ekki að vera ISACA meðlimur</p>
+          <p style="font-size: 0.82rem; color: var(--text-muted); font-weight: 300; line-height: 1.6;">
+            Áhugalýsingin er opin öllum — hvort sem þú ert nú þegar ISACA meðlimur, átt vottun, eða hefur bara áhuga á fagsvæðinu.
+          </p>
+        </div>
+        <div style="padding: 1.5rem; background: white; border: 1px solid var(--border); border-radius: 12px;">
+          <p style="font-size: 0.85rem; color: var(--ink); font-weight: 500; margin-bottom: 0.3rem;">Hafðu samband</p>
+          <p style="font-size: 0.82rem; color: var(--text-muted); font-weight: 300; line-height: 1.6;">
+            Spurningar? Sendu okkur línu á <a href="mailto:info@isaca.is" style="color: var(--accent);">info@isaca.is</a>
+          </p>
+        </div>
+      </div>
+      <div class="fade-in" style="transition-delay: 0.1s;">
+        <div class="form-card">
+          <h3>Áhugalýsing</h3>
+          <p class="form-sub">Skráðu þig á lista stofnmeðlima</p>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Fornafn</label>
+              <input type="text" placeholder="Jón">
+            </div>
+            <div class="form-group">
+              <label>Eftirnafn</label>
+              <input type="text" placeholder="Jónsson">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Netfang</label>
+            <input type="email" placeholder="jon@fyrirtaeki.is">
+          </div>
+          <div class="form-group">
+            <label>Stofnun / Fyrirtæki</label>
+            <input type="text" placeholder="Íslandsbanki, PwC, o.s.frv.">
+          </div>
+          <div class="form-group">
+            <label>ISACA staða</label>
+            <select>
+              <option value="">Veldu...</option>
+              <option value="member-certified">ISACA meðlimur með vottun</option>
+              <option value="member-no-cert">ISACA meðlimur án vottunar</option>
+              <option value="certified-no-member">Með vottun en ekki meðlimur</option>
+              <option value="interested">Áhugasamur — ekki enn meðlimur</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Vottanir (ef við á)</label>
+            <input type="text" placeholder="t.d. CISA, CISM, CIA, CISSP">
+          </div>
+          <button class="btn-primary form-submit" onclick="handleSubmit()">Skrá áhugalýsingu →</button>
+          <p class="form-note">
+            Við meðhöndlum persónuupplýsingar í samræmi við lög um persónuvernd. Upplýsingarnar verða eingöngu notaðar í tengslum við stofnun ISACA félags á Íslandi.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section id="faq">
+  <div class="container">
+    <div class="section-label fade-in">Algengar spurningar</div>
+    <div class="section-title fade-in">Spurt og svarað</div>
+    <div class="faq-list">
+      <div class="faq-item fade-in">
+        <div class="faq-q" onclick="toggleFaq(this)">Hvað kostar aðild?</div>
+        <div class="faq-a"><p>Áhugalýsingin er ókeypis. Þegar deildin er formlega stofnuð fylgir árleg ISACA aðild (u.þ.b. $145 USD) auk staðbundins deildargjald sem stjórnin ákveður — venjulega á bilinu $25–50 USD á ári.</p></div>
+      </div>
+      <div class="faq-item fade-in">
+        <div class="faq-q" onclick="toggleFaq(this)">Hversu margir meðlimir þarf til að stofna deild?</div>
+        <div class="faq-a"><p>ISACA hefur ekki birt opinber viðmið en samkvæmt reynslu annarra deilda þarf að öllu jöfnu 40–50 meðlimi til að fá samþykki fyrir nýrri deild. Ferlið tekur um 12 mánuði í samstarfi við ISACA alþjóðlega.</p></div>
+      </div>
+      <div class="faq-item fade-in">
+        <div class="faq-q" onclick="toggleFaq(this)">Þarf ég að hafa ISACA vottun?</div>
+        <div class="faq-a"><p>Nei. ISACA aðild er opin öllum sem hafa áhuga á UT-endurskoðun, upplýsingaöryggi, áhættustýringu eða UT-stjórnun — hvort sem þú hefur vottun eða ekki.</p></div>
+      </div>
+      <div class="faq-item fade-in">
+        <div class="faq-q" onclick="toggleFaq(this)">Hvað gerir deildin þegar hún er stofnuð?</div>
+        <div class="faq-a"><p>Meðal annars: ársfjórðungslegir fagviðburðir og fyrirlestrar, CPE námskeið, undirbúningsáætlanir fyrir CISA/CISM próf, tengslanetsviðburðir, og umræður um reglugerðarbreytingar eins og DORA og NIS2.</p></div>
+      </div>
+      <div class="faq-item fade-in">
+        <div class="faq-q" onclick="toggleFaq(this)">Er deildin aðeins fyrir fjármálageirann?</div>
+        <div class="faq-a"><p>Alls ekki. ISACA þjónar sérfræðingum í öllum geirum — fjármálum, tryggingum, ríkisrekstri, orkugeiranum, heilbrigðisgeiranum, tæknifyrirtækjum og ráðgjöf. Allir sem starfa við stafrænt traust eru velkomnir.</p></div>
+      </div>
+      <div class="faq-item fade-in">
+        <div class="faq-q" onclick="toggleFaq(this)">Hverjir standa að þessu frumkvæði?</div>
+        <div class="faq-a"><p>Hópur íslenskra sérfræðinga með ISACA vottanir og reynslu af endurskoðun, upplýsingaöryggi og UT-stjórnun. Hafðu samband á info@isaca.is ef þú vilt vita meira eða taka þátt í stofnunarferlinu.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <p>
+    <strong style="color: rgba(244,241,235,0.7);">ISACA Ísland</strong> — frumkvæði til stofnunar deildar<br>
+    <a href="mailto:info@isaca.is">info@isaca.is</a> · <a href="https://www.isaca.org" target="_blank" rel="noopener">isaca.org</a><br><br>
+    ISACA® er skráð vörumerki Information Systems Audit and Control Association.<br>
+    Þessi vefsíða er óháð og ekki rekin af ISACA alþjóðlega.
+  </p>
+</footer>
+
+<script>
+  // ─── COUNTER ANIMATION ───
+  const TARGET = 50;
+  const CURRENT = 12; // ← UPDATE THIS NUMBER AS MEMBERS SIGN UP
+  
+  function animateCounter() {
+    const el = document.getElementById('memberCount');
+    const fill = document.getElementById('progressFill');
+    let count = 0;
+    const duration = 1500;
+    const start = performance.now();
+    
+    function step(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      count = Math.round(eased * CURRENT);
+      el.innerHTML = count + ' <span>/ ' + TARGET + '</span>';
+      fill.style.width = (eased * (CURRENT / TARGET) * 100) + '%';
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  // ─── SCROLL ANIMATIONS ───
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // ─── NAV SCROLL ───
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // ─── FAQ TOGGLE ───
+  function toggleFaq(el) {
+    el.parentElement.classList.toggle('open');
+  }
+
+  // ─── FORM HANDLER ───
+  function handleSubmit() {
+    // Replace with actual form submission logic (e.g., Mailchimp, Formspree, Supabase)
+    alert('Takk fyrir áhugann! Við verðum í sambandi. 🇮🇸');
+  }
+
+  // ─── START ───
+  window.addEventListener('load', () => {
+    setTimeout(animateCounter, 500);
+  });
+</script>
+
+</body>
+</html>
