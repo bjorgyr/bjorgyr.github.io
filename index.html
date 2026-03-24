@@ -906,67 +906,46 @@
 <section class="signup-section" id="signup">
   <div class="container">
     <div class="signup-grid">
-      <div class="fade-in">
-        <div class="section-label">Skráðu þig</div>
-        <div class="section-title">Vertu stofnmeðlimur</div>
-        <div class="section-sub" style="margin-bottom: 2rem;">
-          Fylltu út eyðublaðið til hægri og við verðum í sambandi. Skráningin er áhugayfirlýsing — ekkert gjald fylgir á þessu stigi. Þegar viðmiðunarfjöldi næst hefst formlegt stofnunarferli hjá ISACA alþjóðlega.
+        <div class="fade-in">
+          <div class="section-label">Skráðu þig</div>
+          <div class="section-title">Vertu stofnmeðlimur</div>
+          <div class="section-sub" style="margin-bottom: 2rem;">
+            Fylltu út eyðublaðið til hægri og við verðum í sambandi. Skráningin er áhugayfirlýsing — ekkert gjald fylgir á þessu stigi. Þegar viðmiðunarfjöldi næst hefst formlegt stofnunarferli hjá ISACA alþjóðlega.
+          </div>
+          <div style="padding: 1.5rem; background: var(--ice-light); border-radius: 12px; margin-bottom: 1.5rem;">
+            <p style="font-size: 0.85rem; color: var(--accent); font-weight: 500; margin-bottom: 0.3rem;">Þarftu ekki að vera ISACA meðlimur</p>
+            <p style="font-size: 0.82rem; color: var(--text-muted); font-weight: 300; line-height: 1.6;">
+              Áhugayfirlýsingin er opin öllum — hvort sem þú ert nú þegar ISACA meðlimur, átt vottun, eða hefur bara áhuga á fagsvæðinu.
+            </p>
+          </div>
+          <div style="padding: 1.5rem; background: white; border: 1px solid var(--border); border-radius: 12px;">
+            <p style="font-size: 0.85rem; color: var(--ink); font-weight: 500; margin-bottom: 0.3rem;">Hafðu samband</p>
+            <p style="font-size: 0.82rem; color: var(--text-muted); font-weight: 300; line-height: 1.6;">
+              Spurningar? Sendu okkur línu á <a href="mailto:info@isaca.is" style="color: var(--accent);">info@isaca.is</a>
+            </p>
+          </div>
         </div>
-        <div style="padding: 1.5rem; background: var(--ice-light); border-radius: 12px; margin-bottom: 1.5rem;">
-          <p style="font-size: 0.85rem; color: var(--accent); font-weight: 500; margin-bottom: 0.3rem;">Þarftu ekki að vera ISACA meðlimur</p>
-          <p style="font-size: 0.82rem; color: var(--text-muted); font-weight: 300; line-height: 1.6;">
-            Áhugalýsingin er opin öllum — hvort sem þú ert nú þegar ISACA meðlimur, átt vottun, eða hefur bara áhuga á fagsvæðinu.
-          </p>
-        </div>
-        <div style="padding: 1.5rem; background: white; border: 1px solid var(--border); border-radius: 12px;">
-          <p style="font-size: 0.85rem; color: var(--ink); font-weight: 500; margin-bottom: 0.3rem;">Hafðu samband</p>
-          <p style="font-size: 0.82rem; color: var(--text-muted); font-weight: 300; line-height: 1.6;">
-            Spurningar? Sendu okkur línu á <a href="mailto:info@isaca.is" style="color: var(--accent);">info@isaca.is</a>
-          </p>
-        </div>
-      </div>
       <div class="fade-in" style="transition-delay: 0.1s;">
         <div class="form-card">
-          <h3>Áhugalýsing</h3>
-          <p class="form-sub">Skráðu þig á lista stofnmeðlima</p>
-          <div class="form-row">
-            <div class="form-group">
-              <label>Fornafn</label>
-              <input type="text" placeholder="Jón">
-            </div>
-            <div class="form-group">
-              <label>Eftirnafn</label>
-              <input type="text" placeholder="Jónsson">
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Netfang</label>
-            <input type="email" placeholder="jon@fyrirtaeki.is">
-          </div>
-          <div class="form-group">
-            <label>Stofnun / Fyrirtæki</label>
-            <input type="text" placeholder="Íslandsbanki, PwC, o.s.frv.">
-          </div>
-          <div class="form-group">
-            <label>ISACA staða</label>
-            <select>
-              <option value="">Veldu...</option>
-              <option value="member-certified">ISACA meðlimur með vottun</option>
-              <option value="member-no-cert">ISACA meðlimur án vottunar</option>
-              <option value="certified-no-member">Með vottun en ekki meðlimur</option>
-              <option value="interested">Áhugasamur — ekki enn meðlimur</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Vottanir (ef við á)</label>
-            <input type="text" placeholder="t.d. CISA, CISM, CIA, CISSP">
-          </div>
-          <button class="btn-primary form-submit" onclick="handleSubmit()">Skrá áhugalýsingu →</button>
-          <p class="form-note">
-            Við meðhöndlum persónuupplýsingar í samræmi við lög um persónuvernd. Upplýsingarnar verða eingöngu notaðar í tengslum við stofnun ISACA félags á Íslandi.
-          </p>
-        </div>
+        <h3>Áhugayfirlýsing</h3>
+        <p class="form-sub">Skráðu þig á lista stofnmeðlima</p>
+        <p>Sendu okkur tölvupóst á <a href="mailto:your@email.is?subject=Áhugayfirlýsing&body=Fornafn:%0AEftirnafn:%0ANetfang:%0AStofnun/Fyrirtæki:%0AISACA staða:%0AVottanir:">your@email.is</a> með eftirfarandi upplýsingum:</p>
+        <ul>
+          <li>Fornafn</li>
+          <li>Eftirnafn</li>
+          <li>Netfang</li>
+          <li>Stofnun / Fyrirtæki</li>
+          <li>ISACA staða</li>
+          <li>Vottanir (ef við á)</li>
+        </ul>
+        <a class="btn-primary form-submit" href="mailto:your@email.is?subject=Áhugayfirlýsing&body=Fornafn:%0AEftirnaflan:%0ANetfang:%0AStofnun/Fyrirtæki:%0AISACA staða:%0AVottanir:">
+          Senda tölvupóst →
+        </a>
+        <p class="form-note">
+          Við meðhöndlum persónuupplýsingar í samræmi við lög um persónuvernd. Upplýsingarnar verða eingöngu notaðar í tengslum við stofnun ISACA félags á Íslandi.
+        </p>
       </div>
+    </div>
     </div>
   </div>
 </section>
